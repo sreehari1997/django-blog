@@ -1,0 +1,19 @@
+{% extends 'post/base.html' %}
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+        {% if user.is_authenticated %}
+            <aside class="actions">
+                <a href="{% url 'edit' pk=post.pk %}">
+                    edit
+                </a>
+            </aside>
+        {% endif %}
+            <time class="date">
+                {{ post.created_at }}
+            </time>
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <p>{{ post.content|slice:":250" }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
