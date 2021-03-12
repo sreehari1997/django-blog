@@ -26,7 +26,9 @@ SECRET_KEY = 'gh^_i(pe8nb7@^2st7kxs#bqt!a&3xs9m&%bjxvip5k$kpj7hm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'radiant-savannah-77061.herokuapp.com'
+]
 
 
 # Application definition
