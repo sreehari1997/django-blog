@@ -4,8 +4,17 @@ from django.urls import reverse
 
 
 class Post(models.Model):
+    FAKE = 'F'
+    TRUTH = 'T'
+
+    FAKE_CHOICES = [
+        (FAKE, 'Fake'),
+        (TRUTH, 'Truth')
+    ]
+
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
+    fake = models.CharField(max_length=1, choices=FAKE_CHOICES, default=FAKE)
     content = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
