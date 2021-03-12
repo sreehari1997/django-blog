@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from post.ml_utils import fake_or_not
+from django.db.models import signals
 
 
 class Post(models.Model):
@@ -30,6 +32,17 @@ class Post(models.Model):
     @property
     def get_like_count(self):
         return self.like_set.all().count()
+
+
+def fake_or_truth(sender, instance, created, **kwargs):
+    signals.post_save.disconnect(receiver=fake_or_truth, sender=Post)
+    flag = fake_or_not(instance.content)
+    instance.fake = Post.FAKE if flag == "fake" else Post.TRUTH
+    instance.save()
+    signals.post_save.connect(receiver=fake_or_truth, sender=Post)
+
+
+signals.post_save.connect(receiver=fake_or_truth, sender=Post)
 
 
 class Like(models.Model):
