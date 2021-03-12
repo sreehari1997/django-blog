@@ -27,6 +27,7 @@ SECRET_KEY = 'gh^_i(pe8nb7@^2st7kxs#bqt!a&3xs9m&%bjxvip5k$kpj7hm'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'localhost',
     'radiant-savannah-77061.herokuapp.com'
 ]
 
