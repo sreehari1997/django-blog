@@ -14,7 +14,11 @@
                 <span>{{ post.created_at }}</span>
                 {% if user.is_authenticated %}
                     <a href="{% url 'edit' pk=post.pk %}"><i class="fa fa-edit"></i></a>
+                    <a href="{% url 'like' pk=post.pk %}"><i class="fa fa-heart"> {{ post.get_like_count }}</i></a>
+                {% else %}
+                    <i class="fa fa-heart"> {{ post.get_like_count }}</i>
                 {% endif %}
+
                 </div>
             </div>
             </div>

@@ -4,7 +4,7 @@ from django.views.generic import (
     DetailView
 )
 from post.models import (
-    Post
+    Like, Post
 )
 from post.forms import PostForm
 
@@ -47,3 +47,13 @@ def edit_post(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'post/edit.html', {'form': form})
+
+
+def like_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    qs = Like.objects.filter(user=request.user, post=post)
+    if qs.exists():
+        qs[0].delete()
+    else:
+        Like.objects.create(user=request.user, post=post)
+    return redirect("/")
