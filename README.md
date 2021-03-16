@@ -1,8 +1,8 @@
 ## News feed with fake news tagging using django
 When a news/article is posted in this community the django post_save signal of the particular post is captured by the receiver and give as input to Machine learning model to predict the class.
-![](https://raw.githubusercontent.com/sreehari1997/django-blog/master/screenshots/home.png)
+![alt text](https://github.com/sreehari1997/django-blog/blob/master/screenshots/home.png?raw=true)
 ### Architecture
-![](https://raw.githubusercontent.com/sreehari1997/django-blog/master/screenshots/block_diagram.png)
+![alt text](https://github.com/sreehari1997/django-blog/blob/master/screenshots/block_diagram.png?raw=true)
 
 
 ### Heroku
